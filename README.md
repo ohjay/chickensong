@@ -11,15 +11,17 @@ In order to do so, I plan to follow the approach of
 by Mor et al., which trains and uses a single WaveNet encoder
 in tandem with multiple WaveNet decoders, with one decoder for each "style" of audio.
 The encoder takes raw audio and embeds it in a latent space, and each decoder
-takes the latent code and recreates the audio in the style of whatever it was trained on.
-The authors provide code [here](https://github.com/facebookresearch/music-translation).
+takes the latent embedding and recreates the audio in the style of whatever it was trained on.
+The authors provide code for their project [here](https://github.com/facebookresearch/music-translation).
 
-I would train a decoder on chicken noises, which I should be able to obtain from Google's
-AudioSet dataset. AudioSet indicates clips from YouTube videos containing sounds of different categories. By chance, one of those categories happens to be
+I would train a decoder on chicken noises, which I should be able to obtain from
+Google's AudioSet dataset. AudioSet indicates clips from YouTube videos containing sounds
+corresponding to different categories. Conveniently, one of those categories happens to be
 "[chickens](https://research.google.com/audioset/dataset/chicken_rooster.html)/[roosters](https://research.google.com/audioset/ontology/chicken_rooster.html)."
 I may use [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html) as an additional source of audio for training.
 
-Ultimately, my goal is to emulate the sounds of chickens and compose them in a way that is somewhat melodic to the human ear.
+Ultimately, my goal is to emulate the sounds of chickens
+and compose them in a way that is at least somewhat melodic to the human ear.
 Since most people probably do not consider "chickensong" melodic, I see this as a challenging and worthy goal.
 
 ## Model/Data
