@@ -68,7 +68,13 @@ def dl_train_segments(csv_path, out_dir, ontology_path):
                 if i >= 3:
                     print(e)  # else one of the header rows
             except youtube_dl.utils.DownloadError as e:
-                if not ('This video has been removed' in str(e)):
+                if 'Connection timed out' in str(e):
+                    print('Timeout when downloading %s' % yt_id)
+                    with open('timeout_list.txt', 'a') as timeout_file:
+                        timeout_file.write('{yt_id}\n'.format(yt_id=yt_id))
+                elif not ('This video has been removed' in str(e)) \
+                        and not ('This video is no longer available' in str(e)) \
+                        and not ('This video is unavailable' in str(e)):
                     raise youtube_dl.utils.DownloadError(str(e))
             i += 1
 
