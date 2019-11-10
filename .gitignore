@@ -1,3 +1,5 @@
 data/
+success_list.txt
+failure_list.txt
 timeout_list.txt
 unbalanced_train_segments.csv

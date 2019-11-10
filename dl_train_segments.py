@@ -59,11 +59,13 @@ def dl_train_segments(csv_path, out_dir, ontology_path):
                     # trim output
                     trimmed = ydl_base_tmpl.format(title=str(segs_written).zfill(5)+'_trimmed')
                     ffmpeg_cmd = ffmpeg_cmd_tmpl % (ydl_options['outtmpl'], start_sec, end_sec, trimmed)
-                    ffmpeg_result = subprocess.check_output(ffmpeg_cmd.split())
+                    subprocess.check_output(ffmpeg_cmd.split())
                     # overwrite full wav file
                     mv_cmd = mv_cmd_tmpl % (trimmed, ydl_options['outtmpl'])
-                    mv_result = subprocess.check_output(mv_cmd.split())
+                    subprocess.check_output(mv_cmd.split())
                     segs_written += 1
+                    with open('success_list.txt', 'a') as success_file:
+                        success_file.write('{yt_id}\n'.format(yt_id=yt_id))
             except ValueError as e:
                 if i >= 3:
                     print(e)  # else one of the header rows
@@ -72,10 +74,9 @@ def dl_train_segments(csv_path, out_dir, ontology_path):
                     print('Timeout when downloading %s' % yt_id)
                     with open('timeout_list.txt', 'a') as timeout_file:
                         timeout_file.write('{yt_id}\n'.format(yt_id=yt_id))
-                elif not ('This video has been removed' in str(e)) \
-                        and not ('This video is no longer available' in str(e)) \
-                        and not ('This video is unavailable' in str(e)):
-                    raise youtube_dl.utils.DownloadError(str(e))
+                else:
+                    with open('failure_list.txt', 'a') as failure_file:
+                        failure_file.write('{yt_id}\n'.format(yt_id=yt_id))
             i += 1
 
 if __name__ == '__main__':
