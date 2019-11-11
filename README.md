@@ -23,7 +23,7 @@ In the interest of time, I take the published pre-trained encoder and freeze it 
 ## Model/Data
 
 - You can download the trained model from [Google Drive](TODO).
-- To download and preprocess the data, run `./make_dataset.sh`.
+- To download and preprocess the data, run `./make_dataset.sh <desired data root>`.
 - To download the outdated AudioSet data, get the [unbalanced train split](https://research.google.com/audioset/download.html) and run
 ```
 python3 dl_train_segments.py unbalanced_train_segments.csv --out_dir <raw wav dir>
@@ -36,8 +36,8 @@ for fpath in <raw wav dir>/*.wav; do python3 remove_silences.py ${fpath} --overw
 To generate audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Make sure to download the pre-trained models ([direct link](https://dl.fbaipublicfiles.com/music-translation/pretrained_musicnet.zip)) and place them in the `music-translation/checkpoints` directory. (The resulting folder hierarchy will be `music-translation/checkpoints/pretrained_musicnet`.) Then run
 ```
 cd music-translation
-./train_decoder.sh  # OR download pre-trained model
-./sample_chickens.sh <wav to translate> chickenNet 0
+./train_decoder.sh <data root>  # OR download pre-trained model
+./sample_chickens.sh <wav to translate>
 ```
 
 ## Results

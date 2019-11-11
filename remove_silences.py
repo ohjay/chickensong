@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import argparse
+import subprocess
 from tqdm import tqdm
 from scipy.io import wavfile
 
@@ -25,7 +26,7 @@ def energy(samples):
 
 # Main function
 
-def remove_silences(input_filepath, overwrite, step_duration, silence_threshold):
+def remove_silences(input_filepath, overwrite, out_dir, step_duration, silence_threshold):
     sample_rate, samples = wavfile.read(filename=input_filepath, mmap=True)
 
     max_amplitude = np.iinfo(samples.dtype).max
@@ -51,19 +52,30 @@ def remove_silences(input_filepath, overwrite, step_duration, silence_threshold)
             start = int(index * step_duration * sample_rate)
             stop = int((index + 1) * step_duration * sample_rate)
             processed_samples.append(samples[start:stop])
-    processed_samples = np.concatenate(processed_samples)
 
-    if overwrite:
-        output_filepath = input_filepath
-    else:
-        output_basename = os.path.basename(input_filepath)[:-4] + '_wo_silence.wav'
-        output_filepath = os.path.join(os.path.dirname(input_filepath), output_basename)
-    print('Writing file {}'.format(output_filepath))
-    wavfile.write(
-        filename=output_filepath,
-        rate=sample_rate,
-        data=processed_samples
-    )
+    if len(processed_samples) > 0:
+        processed_samples = np.concatenate(processed_samples)
+
+        if overwrite:
+            output_filepath = input_filepath
+        else:
+            output_basename = os.path.basename(input_filepath)[:-4] + '_wo_silence.wav'
+            output_filepath = os.path.join(os.path.dirname(input_filepath), output_basename)
+
+        if out_dir:
+            output_filepath = os.path.join(out_dir, os.path.basename(output_filepath))
+            if not os.path.exists(out_dir):
+                os.makedirs(out_dir)
+
+        print('Writing file {}'.format(output_filepath))
+        wavfile.write(
+            filename=output_filepath,
+            rate=sample_rate,
+            data=processed_samples
+        )
+    elif overwrite:
+        # remove original, since it's 100% "silent"
+        subprocess.check_output(['rm', input_filepath])
 
 # Process command line arguments
 
@@ -76,12 +88,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Remove silences from a WAV file.')
     parser.add_argument('input_file', type=str, help='The WAV file to process.')
     parser.add_argument('--overwrite', action='store_true', help='Overwrite the input file.')
+    parser.add_argument('--out_dir', type=str, help='(Optional) Output directory.')
     parser.add_argument('--silence_threshold', '-t', type=float, default=0.005, help=t_help)
     parser.add_argument('--step_duration',     '-s', type=float, default=0.1,   help=s_help)
     args = parser.parse_args()
 
     input_filepath = args.input_file
     overwrite = args.overwrite
+    out_dir = args.out_dir
     step_duration = args.step_duration
     silence_threshold = args.silence_threshold
 
@@ -90,4 +104,4 @@ if __name__ == '__main__':
         silence_threshold * 100.0
     ))
 
-    remove_silences(input_filepath, overwrite, step_duration, silence_threshold)
+    remove_silences(input_filepath, overwrite, out_dir, step_duration, silence_threshold)
