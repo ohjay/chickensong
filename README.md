@@ -36,18 +36,18 @@ for fpath in <raw wav dir>/*.wav; do python3 remove_silences.py ${fpath} --overw
 To generate audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Then run
 ```
 cd music-translation
-./train_decoder.sh
+./train_decoder.sh  # OR download pre-trained model
 ./sample_chickens.sh <wav to translate> chickenNet 0
 ```
 
 ## Results
 
-- [`beethoven_ft_chicken.wav`](TODO): chicken rendition of a Beethoven string quartet.
-- [`cambini_wind_ft_chicken.wav`](TODO): chicken rendition of a Cambini wind quintet.
+- [**`beethoven_ft_chicken.wav`**](TODO): chicken rendition of a Beethoven string quartet.
+- [**`cambini_wind_ft_chicken.wav`**](TODO): chicken rendition of a Cambini wind quintet.
 
 ## Bonus: Chickenspeak
 
-I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/master/tts.py) (note: as a cleaned-up fragment of [CorentinJ's excellent voice cloning project](https://github.com/CorentinJ/Real-Time-Voice-Cloning)), so I figured I'd try performing voice cloning on a chicken. This was the result: [`chickenspeak.wav`](TODO).
+I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/master/tts.py) (note: as a cleaned-up fragment of [CorentinJ's excellent voice cloning project](https://github.com/CorentinJ/Real-Time-Voice-Cloning)), so I figured I'd try performing voice cloning on a chicken. This was the result: [**`chickenspeak.wav`**](TODO).
 
 ## Technical Notes
 
