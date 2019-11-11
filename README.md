@@ -22,20 +22,22 @@ In the interest of time, I take the published pre-trained encoder and freeze it 
 
 ## Model/Data
 
-Using the following command, you can download "clucking" and "crowing" noises according to the AudioSet unbalanced train split ([download](https://research.google.com/audioset/download.html)):
+- You can download the trained model from [Google Drive](TODO).
+- To download and preprocess the data, run `./make_dataset.sh`.
+- To download the outdated AudioSet data, download the [unbalanced train split](https://research.google.com/audioset/download.html) and run
 ```
-python3 dl_train_segments.py unbalanced_train_segments.csv --out_dir /media/owen/ba9d40b5-89de-4832-bad4-156b118e4a66/chickens
+python3 dl_train_segments.py unbalanced_train_segments.csv --out_dir <raw wav dir>
+./preprocess_data.sh <raw wav dir> <processed wav dir>
 ```
-
-Briefly describe the files that are included with your repository:
-- trained models
-- training data (or link to training data)
 
 ## Code
 
-Your code for generating your project:
-- Python: generative_code.py
-- Jupyter notebooks: generative_code.ipynb
+To generate audio:
+```
+cd music-translation
+./train_decoder.sh
+./sample_chickens.sh <wav to translate> chickenNet 0
+```
 
 ## Results
 
