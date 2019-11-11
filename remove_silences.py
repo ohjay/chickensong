@@ -25,7 +25,7 @@ def energy(samples):
 
 # Main function
 
-def remove_silences(input_filepath, step_duration, silence_threshold):
+def remove_silences(input_filepath, overwrite, step_duration, silence_threshold):
     sample_rate, samples = wavfile.read(filename=input_filepath, mmap=True)
 
     max_amplitude = np.iinfo(samples.dtype).max
@@ -53,8 +53,11 @@ def remove_silences(input_filepath, step_duration, silence_threshold):
             processed_samples.append(samples[start:stop])
     processed_samples = np.concatenate(processed_samples)
 
-    output_basename = os.path.basename(input_filepath)[:-4] + '_wo_silence.wav'
-    output_filepath = os.path.join(os.path.dirname(input_filepath), output_basename)
+    if overwrite:
+        output_filepath = input_filepath
+    else:
+        output_basename = os.path.basename(input_filepath)[:-4] + '_wo_silence.wav'
+        output_filepath = os.path.join(os.path.dirname(input_filepath), output_basename)
     print('Writing file {}'.format(output_filepath))
     wavfile.write(
         filename=output_filepath,
@@ -72,11 +75,13 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Remove silences from a WAV file.')
     parser.add_argument('input_file', type=str, help='The WAV file to process.')
+    parser.add_argument('--overwrite', action='store_true', help='Overwrite the input file.')
     parser.add_argument('--silence_threshold', '-t', type=float, default=0.005, help=t_help)
     parser.add_argument('--step_duration',     '-s', type=float, default=0.1,   help=s_help)
     args = parser.parse_args()
 
     input_filepath = args.input_file
+    overwrite = args.overwrite
     step_duration = args.step_duration
     silence_threshold = args.silence_threshold
 
@@ -85,4 +90,4 @@ if __name__ == '__main__':
         silence_threshold * 100.0
     ))
 
-    remove_silences(input_filepath, step_duration, silence_threshold)
+    remove_silences(input_filepath, overwrite, step_duration, silence_threshold)
