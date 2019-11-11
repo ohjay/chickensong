@@ -1,3 +1,6 @@
 [submodule "ontology"]
 	path = ontology
 	url = https://github.com/audioset/ontology.git
+[submodule "music-translation"]
+	path = music-translation
+	url = https://github.com/chickensong/music-translation.git

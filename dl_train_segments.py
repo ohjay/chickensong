@@ -77,7 +77,6 @@ def dl_train_segments(csv_path, out_dir, ontology_path):
                 else:
                     with open('failure_list.txt', 'a') as failure_file:
                         failure_file.write('{yt_id}\n'.format(yt_id=yt_id))
-            i += 1
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
