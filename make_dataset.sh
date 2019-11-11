@@ -11,7 +11,7 @@ done
 
 # giant YouTube videos with continuous chicken cacophonies
 for yt_id in hS_J6C6rZiQ Wn8K-jkaKeY; do
-    python3 dl_single.py "https://www.youtube.com/watch?v=${yt_id}" --out_dir $RAW_WAV_DIR --seg_len 300 --video_cutoff_len 1800
+    python3 dl_single.py "https://www.youtube.com/watch?v=${yt_id}" --out_dir $RAW_WAV_DIR --seg_len 300 --video_cutoff_len 1200
 done
 
 # preprocess

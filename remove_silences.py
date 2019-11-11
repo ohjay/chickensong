@@ -89,7 +89,7 @@ if __name__ == '__main__':
     parser.add_argument('input_file', type=str, help='The WAV file to process.')
     parser.add_argument('--overwrite', action='store_true', help='Overwrite the input file.')
     parser.add_argument('--out_dir', type=str, help='(Optional) Output directory.')
-    parser.add_argument('--silence_threshold', '-t', type=float, default=0.002, help=t_help)
+    parser.add_argument('--silence_threshold', '-t', type=float, default=0.003, help=t_help)
     parser.add_argument('--step_duration',     '-s', type=float, default=0.1,   help=s_help)
     args = parser.parse_args()
 
