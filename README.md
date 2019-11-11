@@ -24,15 +24,16 @@ In the interest of time, I take the published pre-trained encoder and freeze it 
 
 - You can download the trained model from [Google Drive](TODO).
 - To download and preprocess the data, run `./make_dataset.sh`.
-- To download the outdated AudioSet data, download the [unbalanced train split](https://research.google.com/audioset/download.html) and run
+- To download the outdated AudioSet data, get the [unbalanced train split](https://research.google.com/audioset/download.html) and run
 ```
 python3 dl_train_segments.py unbalanced_train_segments.csv --out_dir <raw wav dir>
+for fpath in <raw wav dir>/*.wav; do python3 remove_silences.py ${fpath} --overwrite; done
 ./preprocess_data.sh <raw wav dir> <processed wav dir>
 ```
 
 ## Code
 
-To generate audio:
+To generate audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Then run
 ```
 cd music-translation
 ./train_decoder.sh
@@ -41,15 +42,18 @@ cd music-translation
 
 ## Results
 
-Documentation of your results in an appropriate format, both links to files and a brief description of their contents:
-- `.wav` files or `.mp4`
+- [`beethoven_ft_chicken.wav`](TODO): chicken rendition of a Beethoven string quartet.
+- [`cambini_wind_ft_chicken.wav`](TODO): chicken rendition of a Cambini wind quintet.
 
-Bonus: chickenspeech (perform voice cloning on a chicken).
+## Bonus: Chickenspeak
+
+I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/master/tts.py) (note: as a cleaned-up fragment of [CorentinJ's excellent voice cloning project](https://github.com/CorentinJ/Real-Time-Voice-Cloning)), so I figured I'd try performing voice cloning on a chicken. This was the result: [`chickenspeak.wav`](TODO).
 
 ## Technical Notes
 
 - The code runs on Ubuntu 18.04 with Python 3.6.8.
-- It requires PyTorch, librosa, SciPy, tqdm, etc. Nothing too unusual.
+- To get the data, you'll need `youtube-dl`. You can install it with pip.
+- Other than that, the requirements are PyTorch, librosa, SciPy, tqdm, etc. Nothing too unusual.
 
 ## References
 
@@ -57,5 +61,6 @@ Bonus: chickenspeech (perform voice cloning on a chicken).
   - [A Universal Music Translation Network](https://arxiv.org/pdf/1805.07848.pdf)
 - Repositories
   - [`music-translation`](https://github.com/facebookresearch/music-translation)
+  - [`Real-Time-Voice-Cloning`](https://github.com/CorentinJ/Real-Time-Voice-Cloning)
 - Datasets
   - [AudioSet](https://research.google.com/audioset)
