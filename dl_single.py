@@ -4,7 +4,7 @@ import argparse
 import youtube_dl
 import subprocess
 
-def dl_single(video_url, out_dir, seg_len, min_seg_len):
+def dl_single(video_url, out_dir, seg_len, min_seg_len, video_cutoff_len):
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
@@ -30,7 +30,7 @@ def dl_single(video_url, out_dir, seg_len, min_seg_len):
         if m:
             segs_written = max(int(m.group(1)) + 1, segs_written)
     # split into segments
-    duration = meta['duration']
+    duration = min(meta['duration'], video_cutoff_len)
     t0 = 0
     while t0 + min_seg_len < duration:
         out_path = os.path.join(out_dir, str(segs_written).zfill(5) + '.wav')
@@ -48,5 +48,6 @@ if __name__ == '__main__':
     parser.add_argument('--out_dir', type=str, default='data/chickens')
     parser.add_argument('--seg_len', type=int, default=120, help='segment length in seconds')
     parser.add_argument('--min_seg_len', type=int, default=30, help='minimum segment length')
+    parser.add_argument('--video_cutoff_len', type=float, default=float('inf'), help='in seconds')
     args = parser.parse_args()
-    dl_single(args.video_url, args.out_dir, args.seg_len, args.min_seg_len)
+    dl_single(args.video_url, args.out_dir, args.seg_len, args.min_seg_len, args.video_cutoff_len)
