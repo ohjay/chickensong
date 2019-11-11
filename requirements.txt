@@ -1,0 +1,8 @@
+youtube_dl
+numpy
+scipy
+librosa
+matplotlib
+h5py
+tqdm
+intervaltree

@@ -33,7 +33,7 @@ for fpath in <raw wav dir>/*.wav; do python3 remove_silences.py ${fpath} --overw
 
 ## Code
 
-To generate audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Then run
+To generate audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Make sure to download the pre-trained models ([direct link](https://dl.fbaipublicfiles.com/music-translation/pretrained_musicnet.zip)) and place them in the `music-translation/checkpoints` directory. (The resulting folder hierarchy will be `music-translation/checkpoints/pretrained_musicnet`.) Then run
 ```
 cd music-translation
 ./train_decoder.sh  # OR download pre-trained model
