@@ -46,7 +46,7 @@ cd music-translation
 git clone --recursive https://github.com/ohjay/chickensong.git
 cd chickensong
 ```
-Follow setup instructions for `music-translation`, including downloading the pre-trained models (see [Code](https://github.com/ohjay/chickensong#code)). Then, depending on whether or not you are using the pre-trained chicken model, you have two options.
+Follow setup instructions for the `music-translation` submodule, including downloading the pre-trained models (see [Code](https://github.com/ohjay/chickensong#code)). Then, depending on whether or not you are using the pre-trained chicken model, you have two options.
 
 ### If using the pre-trained chicken model
 Download the chicken model (see [Model/Data](https://github.com/ohjay/chickensong#modeldata)). Then run
