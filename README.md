@@ -22,7 +22,7 @@ In the interest of time, I take the published pre-trained encoder and freeze it 
 
 ## Model/Data
 
-- You can download the trained model from [Google Drive](TODO).
+- You can download the trained model from [Google Drive](TODO). Place it in the `music-translation/checkpoints` directory. (The resulting folder hierarchy will be `music-translation/checkpoints/chickenNet`.)
 - To download and preprocess the data, run `./make_dataset.sh <desired data root>`.
 - To download the outdated AudioSet data, get the [unbalanced train split](https://research.google.com/audioset/download.html) and run
 ```
@@ -37,6 +37,29 @@ To generate audio, follow the [`music-translation`](https://github.com/chickenso
 ```
 cd music-translation
 ./train_decoder.sh <data root>  # OR download pre-trained model
+./sample_chickens.sh <wav to translate>
+```
+
+## Quickstart
+
+```
+git clone --recursive https://github.com/ohjay/chickensong.git
+cd chickensong
+```
+Follow setup instructions for `music-translation`, including downloading the pre-trained models (see [Code](https://github.com/ohjay/chickensong#code)). Then, depending on whether or not you are using the pre-trained chicken model, you have two options.
+
+### If using the pre-trained chicken model
+Download the chicken model (see [Model/Data](https://github.com/ohjay/chickensong#modeldata)). Then run
+```
+cd music-translation
+./sample_chickens.sh <wav to translate>
+```
+
+### If training the model yourself
+```
+./make_dataset.sh .
+cd music-translation
+./train_decoder.sh ..
 ./sample_chickens.sh <wav to translate>
 ```
 
