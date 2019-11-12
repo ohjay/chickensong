@@ -37,7 +37,7 @@ To generate audio, follow the [`music-translation`](https://github.com/chickenso
 ```
 cd music-translation
 ./train_decoder.sh <data root>  # OR download pre-trained model
-./sample_chickens.sh <wav to translate>
+./sample_chickens.sh <wav to translate>  # warning: slow as hell
 ```
 
 ## Quickstart
