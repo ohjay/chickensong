@@ -5,3 +5,4 @@ timeout_list.txt
 unbalanced_train_segments.csv
 data.log
 train.log
+generated.wav

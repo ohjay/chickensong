@@ -13,12 +13,11 @@ import argparse
 import synthesizer
 import numpy as np
 from pathlib import Path
+import vocoder.inference
+import synthesizer.inference
 
-vocoder_path = os.path.dirname(list(vocoder.__path__)[0])
-synthesizer_path = os.path.dirname(list(synthesizer.__path__)[0])
-
-SYN_MODEL_DIR   = os.path.join(synthesizer_path, 'saved_models', 'logs-pretrained')
-VOC_MODEL_FPATH = os.path.join(vocoder_path, 'saved_models', 'pretrained', 'pretrained.pt')
+SYN_MODEL_DIR = os.path.join(list(synthesizer.__path__)[0], 'saved_models', 'logs-pretrained')
+VOC_MODEL_FPATH = os.path.join(list(vocoder.__path__)[0], 'saved_models', 'pretrained', 'pretrained.pt')
 
 def ttwav(text, embed_fpath):
     """Text-to-WAV."""
@@ -30,6 +29,7 @@ def ttwav(text, embed_fpath):
 
     spec = synth.synthesize_spectrograms([text], embed)[0]
     generated_wav = vocoder.inference.infer_waveform(spec)
+    print('')
     generated_wav = np.pad(
         generated_wav, (0, synth.sample_rate), mode='constant')
 
