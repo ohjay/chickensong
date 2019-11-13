@@ -77,7 +77,7 @@ I use [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html) as a s
 The first direction didn't work very well, so I tried going the other way around: encoding the chicken audio and decoding it using some of the pre-trained instrument decoders. This can be seen as the classical-musical perception of the tunes the chickens are "trying to sing."
 
 - [**`beethoven_from_chicken.wav`**](https://drive.google.com/file/d/1ca4BJ5Id0F09ObEGCQEIop34MXw72R3f/view?usp=sharing): from [chicken](https://www.youtube.com/watch?v=IpNgah-e6v4) ([WAV](https://drive.google.com/file/d/1xPADH_D3cIqdZAPtX1JUSN1YjHsX-CAi/view?usp=sharing)) to a Beethoven string quartet.
-- [**`cambini_wind_from_chicken.wav`**](TODO): from chicken ([WAV](TODO)) to a Cambini wind quintet.
+- [**`violin_from_chicken.wav`**](https://drive.google.com/file/d/11phXCaam2sqDmK99X1sHD78k1P10nPFe/view?usp=sharing): from chicken ([WAV](https://drive.google.com/file/d/1DC2FlJIdmMOEk_MLlAX1pqEy1m5uSNWg/view?usp=sharing)) to a Beethoven violin.
 
 ### Autoencoder reconstructions
 
