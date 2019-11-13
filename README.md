@@ -67,7 +67,7 @@ cd music-translation
 
 ## Results
 
-I use [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html) as a source of audio to be translated into chicken. (Note that the pre-trained `music-translation` models were trained using MusicNet, so there is some precedent.) My chicken model was trained for 150 epochs on about TODO minutes of audio in total, collected from a hand-curated set of six YouTube videos (see [`make_dataset.sh`](https://github.com/ohjay/chickensong/blob/master/make_dataset.sh) for links).
+I use [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html) as a source of audio to be translated into chicken. (Note that the pre-trained `music-translation` models were trained using MusicNet, so there is some precedent.) My chicken model was trained for 200 epochs on about 15 total minutes of unique audio, collected from a hand-curated set of six YouTube videos (see [`make_dataset.sh`](https://github.com/ohjay/chickensong/blob/master/make_dataset.sh) for links).
 
 - [**`cambini_wind_ft_chicken.wav`**](https://drive.google.com/file/d/1baf4mkBw-xL56-2pB9BOdmGRPXTQtJ45/view?usp=sharing): chicken rendition of a [Cambini wind quintet](https://drive.google.com/file/d/1KZPKWLSAtANjqyqZmsshKPDkG_3k5BRw/view?usp=sharing).
 - [**`bach_cello_ft_chicken.wav`**](https://drive.google.com/file/d/1eqmXrrtqt2meE1NTdRAX3LDSyGf_ttmS/view?usp=sharing): chicken rendition of a [Bach cello solo](https://drive.google.com/file/d/1IFbcnpKFjkJJ87Hdld5LSB1Q2saElbb9/view?usp=sharing).
@@ -98,7 +98,7 @@ I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/
 
 ## Reflections
 
-As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's a difficult task to translate random irregular clucking and background noise to fluid music using current audio-based domain translation methods. This is (? **TODO**) evidenced by the fact that autoencoder reconstructions are chicken-like, but the translations are not. There are multiple semantic facets of audio that can potentially be involved in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. Perhaps some kind of disentanglement would help in this case, to exploit the structure of audio in a learning-related fashion.
+As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's a difficult task to translate irregular clucking and background noise to fluid music using current audio-based domain translation methods. This is (? **TODO**) evidenced by the fact that autoencoder reconstructions are chicken-like, but the translations are not. There are quite a few semantic facets of audio to get right in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. So perhaps some kind of disentanglement would be helpful, to exploit the structure of audio in a learning-related fashion.
 
 ## References
 
@@ -108,4 +108,5 @@ As you can hear, this project ended up being more challenging than I had anticip
   - [`music-translation`](https://github.com/facebookresearch/music-translation)
   - [`Real-Time-Voice-Cloning`](https://github.com/CorentinJ/Real-Time-Voice-Cloning)
 - Datasets
+  - [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html)
   - [AudioSet](https://research.google.com/audioset)
