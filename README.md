@@ -21,7 +21,7 @@ but I found these clips to be too full of other, non-chicken utterances (e.g. hu
 
 ## Model/Data
 
-- You can download the trained model from [Google Drive](TODO). Place it in the `chickensong/music-translation/checkpoints` directory. (The resulting folder hierarchy will be `chickensong/music-translation/checkpoints/chickenNet`.)
+- You can download the trained model from [Google Drive](https://drive.google.com/file/d/1p8LoXG6CY5FsNFxf4mUFlz7mtZ3CDDJZ/view?usp=sharing). Place it in the `chickensong/music-translation/checkpoints` directory. (The resulting folder hierarchy will be `chickensong/music-translation/checkpoints/chickenNet`.)
 - To download and preprocess the data, run `./make_dataset.sh <desired data root>`.
 - To download the outdated AudioSet data, get the [unbalanced train split](https://research.google.com/audioset/download.html) and run
 ```
@@ -76,7 +76,7 @@ I use [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html) as a s
 
 The first direction didn't work very well, so I tried going the other way around: encoding the chicken audio and decoding it using some of the pre-trained instrument decoders. This can be seen as the classical-musical perception of the tunes the chickens are "trying to sing."
 
-- [**`beethoven_from_chicken.wav`**](TODO): from chicken ([WAV](TODO)) to a Beethoven string quartet.
+- [**`beethoven_from_chicken.wav`**](https://drive.google.com/file/d/1ca4BJ5Id0F09ObEGCQEIop34MXw72R3f/view?usp=sharing): from [chicken](https://www.youtube.com/watch?v=IpNgah-e6v4) ([WAV](https://drive.google.com/file/d/1xPADH_D3cIqdZAPtX1JUSN1YjHsX-CAi/view?usp=sharing)) to a Beethoven string quartet.
 - [**`cambini_wind_from_chicken.wav`**](TODO): from chicken ([WAV](TODO)) to a Cambini wind quintet.
 
 ### Autoencoder reconstructions
