@@ -13,11 +13,11 @@ but I found these clips to be too full of other, non-chicken utterances (e.g. hu
 
 ## Future/Alternative Directions
 
-- I could theoretically use NSynth to produce chicken timbre conditioned on MIDI note sequences. However, I don't have ready access to chicken audio that is annotated to the same degree as the NSynth dataset. To match that data, I would need truncated squawk clips labeled with note, pitch, and velocity. While I could try to create these annotations using a library such as [`aubio`](https://aubio.org), I don't think I have time for an attempt.
-- [This paper](https://arxiv.org/pdf/1910.06711.pdf) (MelGAN: Generative Adversarial Networks for Conditional Waveform Synthesis, with code [here](https://github.com/descriptinc/melgan-neurips)), linked by Robert, might be useful. I could follow their approach from Section 3.3 and replace the WaveNet decoder with a MelGAN generator. This would make translation incredibly fast in comparison to what I'm currently dealing with. However, I don't have time to train the model. (The authors mention they train each decoder for four days on a 2080 Ti on MusicNet data, whereas I have less time, worse hardware, and lower-quality data.)
-- [This recent paper](https://arxiv.org/pdf/1811.09620.pdf) (TimbreTron) might lead to superior results, but I don't have time to implement it.
+- I could theoretically train NSynth to produce chicken timbre conditioned on MIDI note sequences. However, I don't have ready access to chicken audio that is annotated to the same degree as the NSynth dataset. To match that data, I would need truncated squawk clips labeled with notes, pitches, and velocities. While I could try to create these annotations using a library such as [`aubio`](https://aubio.org), I don't think I have time for an attempt.
+- [This paper](https://arxiv.org/pdf/1910.06711.pdf) (MelGAN: Generative Adversarial Networks for Conditional Waveform Synthesis, with code [here](https://github.com/descriptinc/melgan-neurips)), linked by Robert, might be useful. I could follow their approach from Section 3.3 and replace the WaveNet decoder in the translation network with a MelGAN generator. This would make translation incredibly fast in comparison to what I'm currently dealing with. However, somewhat ironically I lack the time to train the model. (The authors mention they train each decoder for four days on a 2080 Ti on MusicNet data, whereas I have less time, worse hardware, and lower-quality data.)
+- [This recent paper](https://arxiv.org/pdf/1811.09620.pdf) (TimbreTron) might yield superior results, but I don't have time to implement it.
 - For this project, I could of course experiment with other domain translations. There exists a vast space of music and music genres that might be translated into chickensong. But I don't have a MelGAN, so translation is super slow.
-- Even with the same method, I expect that the results can be improved with more data and more training.
+- I expect that my results can be improved with more data and more training.
 
 ## Model/Data
 
@@ -32,9 +32,9 @@ for fpath in <raw wav dir>/*.wav; do python3 remove_silences.py ${fpath} --overw
 
 ## Code
 
-The training code is in the `music-translation` submodule.
+The training code is in the [`music-translation`](https://github.com/chickensong/music-translation) submodule.
 
-To generate translated audio, follow the [`music-translation`](https://github.com/chickensong/music-translation) setup instructions. Make sure to download the pre-trained models ([direct link](https://dl.fbaipublicfiles.com/music-translation/pretrained_musicnet.zip)) and place them in the `chickensong/music-translation/checkpoints` directory. (The resulting folder hierarchy will be `chickensong/music-translation/checkpoints/pretrained_musicnet`.) Then run
+To generate translated audio, first follow the `music-translation` [setup instructions](https://github.com/chickensong/music-translation#setup). Make sure to download the pre-trained models ([direct link](https://dl.fbaipublicfiles.com/music-translation/pretrained_musicnet.zip)) and place them in the `chickensong/music-translation/checkpoints` directory. (The resulting folder hierarchy will be `chickensong/music-translation/checkpoints/pretrained_musicnet`.) Then run
 ```
 cd music-translation
 ./train_decoder.sh <data root>  # OR download pre-trained model
@@ -100,7 +100,7 @@ I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/
 
 ## Reflections
 
-As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's a difficult task to translate irregular clucking and background noise to fluid music using current audio-based domain translation methods. This is evidenced by the fact that autoencoder reconstructions are chicken-like, but the translations are not. There are quite a few semantic facets of audio to get right in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. So perhaps some kind of disentanglement would be helpful, to exploit the structure of audio in a learning-related fashion.
+As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's inherently a difficult task to translate irregular clucking and background noise into fluid music using current audio-based domain translation methods. This is evidenced by the fact that the autoencoder reconstructions are chicken-like, but the translations are less obviously so. There are quite a few semantic facets of audio to get right in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. So perhaps some kind of disentanglement would be helpful, to exploit the structure of audio in a learning context.
 
 ## References
 
