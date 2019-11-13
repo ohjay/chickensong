@@ -84,7 +84,7 @@ The first direction didn't work very well, so I tried going the other way around
 I include reconstructions of training and validation data given by the denoising WaveNet autoencoder.
 
 - [`train_input.wav`](https://drive.google.com/file/d/1MpWNYzBp0Pnx_fKSM-CBy-Nd4WM9NiMb/view?usp=sharing) --> [**`train_reconstruction.wav`**](https://drive.google.com/file/d/13HJznavpoNeJO3upARbL8j2_NzIrufya/view?usp=sharing)
-- [`validation_input.wav`](TODO) --> [**`validation_reconstruction.wav`**](TODO)
+- [`validation_input.wav`](https://drive.google.com/file/d/1fzG0RqO2KEpjjLaxFmYONZv5c-cqEBq3/view?usp=sharing) --> [**`validation_reconstruction.wav`**](https://drive.google.com/file/d/1FMDvvxaxE86J5oy4jMPgzYN6VSe_-sVJ/view?usp=sharing)
 
 ### Bonus: Chickenspeak
 
