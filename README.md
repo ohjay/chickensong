@@ -83,12 +83,14 @@ The first direction didn't work very well, so I tried going the other way around
 
 I include reconstructions of training and validation data given by the denoising WaveNet autoencoder.
 
-- [`train_input.wav`](TODO) --> [**`train_reconstruction.wav`**](TODO)
+- [`train_input.wav`](https://drive.google.com/file/d/1MpWNYzBp0Pnx_fKSM-CBy-Nd4WM9NiMb/view?usp=sharing) --> [**`train_reconstruction.wav`**](https://drive.google.com/file/d/13HJznavpoNeJO3upARbL8j2_NzIrufya/view?usp=sharing)
 - [`validation_input.wav`](TODO) --> [**`validation_reconstruction.wav`**](TODO)
 
 ### Bonus: Chickenspeak
 
-I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/master/tts.py) (note: as a cleaned-up fragment of [CorentinJ's excellent voice cloning project](https://github.com/CorentinJ/Real-Time-Voice-Cloning)), so I figured I'd try performing voice cloning on a chicken. This was the result: [**`chickenspeak.wav`**](TODO). The input text was "kloek kloek kakara-kakara	kotek-kotek kokoda guaguagua petok kudak kackel po-kok kuckeliku kokarakkoo kukuruyuk kukeleku quiquiriquic kikiriki" (a collection of [onomatopoeias](https://en.wikipedia.org/wiki/Cross-linguistic_onomatopoeias#Animal_sounds) for chickens clucking and crowing). Like everything else, it didn't work very well.
+I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/master/tts.py) (note: as a cleaned-up fragment of [CorentinJ's excellent voice cloning project](https://github.com/CorentinJ/Real-Time-Voice-Cloning)), so I figured I'd try performing voice cloning on a chicken. This was the result: [**`chickenspeak.wav`**](https://drive.google.com/file/d/14XQlXCi2IB_jrGRVVVKD8gVfMRqS47qC/view?usp=sharing). The input text was "kloek kloek kakara-kakara	kotek-kotek kokoda guaguagua petok kudak kackel po-kok kuckeliku kokarakkoo kukuruyuk kukeleku quiquiriquic kikiriki" (a collection of [onomatopoeias](https://en.wikipedia.org/wiki/Cross-linguistic_onomatopoeias#Animal_sounds) for chickens clucking and crowing). Like everything else, it didn't work very well.
+
+[Another example.](https://drive.google.com/file/d/1jNp1IaQwvg7IEzsByd9HXte-pfp-w-nA/view?usp=sharing) / [Speaking actual English (?).](https://drive.google.com/file/d/1xj9Dfk0EgWN8qCKRNvsgacsphm5SNg5n/view?usp=sharing)
 
 ## Technical Notes
 
@@ -98,7 +100,7 @@ I already had the [code for it](https://github.com/ohjay/visual-questioner/blob/
 
 ## Reflections
 
-As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's a difficult task to translate irregular clucking and background noise to fluid music using current audio-based domain translation methods. This is (? **TODO**) evidenced by the fact that autoencoder reconstructions are chicken-like, but the translations are not. There are quite a few semantic facets of audio to get right in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. So perhaps some kind of disentanglement would be helpful, to exploit the structure of audio in a learning-related fashion.
+As you can hear, this project ended up being more challenging than I had anticipated and the results were not stellar. I attribute this mainly to the fact that my chicken data was not very structured (unlike classical music), and it's a difficult task to translate irregular clucking and background noise to fluid music using current audio-based domain translation methods. This is evidenced by the fact that autoencoder reconstructions are chicken-like, but the translations are not. There are quite a few semantic facets of audio to get right in a domain translation: timbre, rhythm, melody, "foreground sound" in the case of my messy chicken data, volume, etc. So perhaps some kind of disentanglement would be helpful, to exploit the structure of audio in a learning-related fashion.
 
 ## References
 
